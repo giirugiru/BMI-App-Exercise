@@ -47,7 +47,9 @@ class ViewController: UIViewController {
             let result = calculateBMI(height: heightInput!, weight: weightInput!)
 
             // Change label to result
-            ResultLabel.text = "\(Float(result))"
+            //ResultLabel.text = "\(Float(result))"
+            // Format to 2 digit after comma
+            ResultLabel.text = String(format: "%.2f", result)
             
             // Change image based on the result
             switch result {
@@ -63,9 +65,11 @@ class ViewController: UIViewController {
             case 30...34.99:
                 ExplanationLabel.text = "You are obese"
                 ResultImage.image = UIImage(named: "Obese")
-            default:
+            case 35...:
                 ExplanationLabel.text = "You are extremely obese"
                 ResultImage.image = UIImage(named: "Extremely Obese")
+            default:
+                print("Input error")
             }
             
         } else {
